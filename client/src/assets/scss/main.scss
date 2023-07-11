@@ -1,0 +1,135 @@
+@import 'reset', 'font';
+body {
+    font-family: 'Pretendard';
+    color: #fff;
+    background: #2d2d2d;
+    padding-bottom: 500px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+main {
+    padding: 60px 0;
+}
+
+.inner {
+    width: 1920px;
+    margin: 0 auto;
+}
+
+.slide-fade-enter-from {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+  
+  .slide-fade-enter-to {
+    transition: all .5s ease;
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  .slide-fade-leave-active {
+    transition: all 0.8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+
+button.custom {
+    all: unset;
+    width: 200px;
+    text-align: center;
+    border-radius: 40px;
+    background: #fff;
+    color: #000;
+    height: 48px;
+    font-size: 24px;
+    margin-right: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    &:last-child {
+        margin-right: 0;
+    }
+    &:hover {
+        box-shadow: 3px 3px 20px rgba($color: #fff, $alpha:0.8);
+    }
+    &.red {
+        color: #fff;
+        background: #ed3124;
+        &:hover {
+            box-shadow: 3px 3px 20px rgba($color: #ed3124, $alpha:0.8);
+        }
+    }
+}
+
+#youtube-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px 60px;
+    padding: 50px;
+    > li {
+        width: 300px;
+        cursor: pointer;
+
+        .movie-img {
+            height: 450px;
+            margin-bottom: 20px;
+            position: relative;
+            &:hover {
+                .rank {
+                    opacity: 1;
+                }
+                .button-group {
+                    opacity: 0.8;
+                }
+            }
+            img {
+                border-radius: 5px;
+                overflow: hidden;
+            }
+            .rank {
+                position: absolute;
+                left: -20px;
+                top: -80px;
+                font-size: 150px;
+                color: #ffffff;
+                font-weight: 700;
+                transform: rotate(30deg);
+                opacity: 0.5;
+            }
+            .button-group {
+                cursor: pointer;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                transition: 0.4s;
+                .custom {
+                    &:first-child {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+        h4 {
+            text-align: left;
+            font-size: 36px;
+            font-weight: 700;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+    }
+}
