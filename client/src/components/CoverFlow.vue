@@ -45,11 +45,13 @@
 </template>
 
 <script>
-import StarRating from "./StarRating.vue";
+import StarRating from "@/components/StarRating.vue";
 export default {
+  activated() {
+    this.clickCover(this.mainCard);
+  },
   mounted() {
-    this.$refs.coverFlow.scrollLeft = 150;
-    this.moveScroll();
+    this.clickCover(this.mainCard);
   },
   data() {
     return {
@@ -148,7 +150,7 @@ $cover-width: 300px;
     will-change: transform;
     display: inline-block;
     margin-right: 30px;
-    transition: 0.5s ease;
+    transition: 0.5s cubic-bezier(1, 0.5, 0.8, 1);
     position: relative;
     margin-top: 250px;
     cursor: pointer;

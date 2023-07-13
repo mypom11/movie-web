@@ -27,19 +27,9 @@
             />
           </div>
           <div class="movie-overview">
-            {{ tvDetail.detail.overview }}
-            <!-- <ul class="companies">
-              <li
-                v-for="(company, i) in tvDetail.detail.production_companies"
-                :key="i"
-              >
-                <img
-                  v-if="company.logo_path !== null"
-                  :src="`https://image.tmdb.org/t/p/original/${company.logo_path}`"
-                  alt=""
-                />
-              </li>
-            </ul> -->
+            <h6>
+              {{ tvDetail.detail.overview }}
+            </h6>
             <p class="genre">
               <b v-for="(genre, i) in tvDetail.detail.genres" :key="i">
                 {{ genre.name }}
@@ -153,7 +143,7 @@ import ISO6391 from "iso-639-1";
 const iso = ISO6391;
 export default {
   mounted() {
-    this.gettvDetail(this.$route.query.id);
+    this.getTvDetail(this.$route.query.id);
   },
   data() {
     return {
@@ -169,7 +159,7 @@ export default {
     };
   },
   methods: {
-    gettvDetail(id) {
+    getTvDetail(id) {
       this.$axios
         .get("http://localhost:4000/api/tv/detail", { params: { id } })
         .then((res) => {
@@ -357,6 +347,15 @@ section {
         line-height: 1.5;
         color: rgba($color: #ffffff, $alpha: 0.8);
         position: relative;
+        h6 {
+          font-size: 16px;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 6;
+        }
       }
       .credit {
         width: 20%;

@@ -1,6 +1,10 @@
 <template>
   <AppHeader />
-  <RouterView />
+  <router-view v-slot="{ Component }">
+    <keep-alive :include="['MainPage', 'MovieMain', 'TvMain', 'SearchMain']">
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
 </template>
 
 <script>

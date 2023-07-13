@@ -18,19 +18,9 @@
             />
           </div>
           <div class="movie-overview">
-            {{ movieDetail.detail.overview }}
-            <!-- <ul class="companies">
-              <li
-                v-for="(company, i) in movieDetail.detail.production_companies"
-                :key="i"
-              >
-                <img
-                  v-if="company.logo_path !== null"
-                  :src="`https://image.tmdb.org/t/p/original/${company.logo_path}`"
-                  alt=""
-                />
-              </li>
-            </ul> -->
+            <h6>
+              {{ movieDetail.detail.overview }}
+            </h6>
             <p class="genre">
               <b v-for="(genre, i) in movieDetail.detail.genres" :key="i">
                 {{ genre.name }}
@@ -275,17 +265,7 @@ section {
       justify-content: space-between;
       height: 300px;
       gap: 1%;
-      .companies {
-        display: flex;
-        position: absolute;
-        top: -100px;
-        gap: 20px;
-        > li {
-          padding: 5px 10px;
-          width: auto;
-          height: 50px;
-        }
-      }
+
       .movie-img {
         position: relative;
         width: 18%;
@@ -327,6 +307,15 @@ section {
         line-height: 1.5;
         color: rgba($color: #ffffff, $alpha: 0.8);
         position: relative;
+        h6 {
+          font-size: 16px;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 6;
+        }
       }
       .credit {
         width: 20%;

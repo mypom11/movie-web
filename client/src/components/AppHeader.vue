@@ -2,17 +2,41 @@
   <header>
     <div class="inner">
       <ul class="nav">
-        <li @click="$router.push({ name: 'Main' })">홈</li>
-        <li>영화</li>
-        <li>TV시리즈</li>
-        <li>검색</li>
+        <li
+          @click="$router.push({ name: 'Main' })"
+          :class="{ on: $route.path === '/' }"
+        >
+          홈
+        </li>
+        <li
+          @click="$router.push({ name: 'MovieMain' })"
+          :class="{ on: $route.path.includes('Movie') }"
+        >
+          영화
+        </li>
+        <li
+          @click="$router.push({ name: 'TvMain' })"
+          :class="{ on: $route.path.includes('Tv') }"
+        >
+          TV시리즈
+        </li>
+        <li
+          @click="$router.push({ name: 'SearchMain' })"
+          :class="{ on: $route.path.includes('Search') }"
+        >
+          검색
+        </li>
       </ul>
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    console.log(this.$route);
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -264,7 +264,7 @@ export default {
   .progress {
     height: 100%;
     background-color: #ed3124;
-    transition: width 0.3s;
+    transition: width 0.01s;
     pointer-events: none;
   }
 }

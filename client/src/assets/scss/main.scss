@@ -3,7 +3,7 @@ body {
     font-family: 'Pretendard';
     color: #fff;
     background: #2d2d2d;
-    padding-bottom: 500px;
+    min-height: 100vh;
 }
 
 ::-webkit-scrollbar {
@@ -34,6 +34,7 @@ main {
     transform: translateX(100vw);
     opacity: 0;
   }
+
 
 button.custom {
     all: unset;
@@ -121,11 +122,12 @@ button.custom {
             }
         }
         h4 {
-            text-align: left;
-            font-size: 36px;
+            text-align: center;
+            font-size: 26px;
             font-weight: 700;
             width: 100%;
             overflow: hidden;
+            word-break: keep-all;
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-box-orient: vertical;

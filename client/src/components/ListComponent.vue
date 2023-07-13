@@ -1,6 +1,6 @@
 <template>
-  <div class="inner" v-if="loading">
-    <h2>시즌 {{ season }} 에피소드</h2>
+  <div class="inner">
+    <h2>{{ title }}</h2>
     <div class="slider-container">
       <span
         class="arrow-left"
@@ -12,10 +12,7 @@
       <span
         class="arrow-right"
         @click="currentSlide++"
-        v-if="
-          currentSlide < episode.episodes.length - 5 &&
-          episode.episodes.length > 5
-        "
+        v-if="currentSlide < listData.length - 5 && listData.length > 5"
       >
         <font-awesome-icon :icon="['fas', 'angle-right']" />
       </span>
@@ -23,19 +20,27 @@
         class="trailer-list"
         :style="{ transform: `translateX(${-currentSlide * 377}px)` }"
       >
-        <li v-for="(episode, i) in episode.episodes" :key="i">
+        <li
+          v-for="(list, i) in listData"
+          :key="i"
+          @click="moveDetailPage(list.id)"
+        >
           <div class="video-wrapper">
             <img
-              v-if="episode.still_path !== null"
-              :src="`https://image.tmdb.org/t/p/original/${episode.still_path}`"
+              v-if="list.backdrop_path !== null"
+              :src="`https://image.tmdb.org/t/p/original/${list.backdrop_path}`"
               alt=""
             />
             <img v-else src="@/assets/images/no-image.png" alt="" />
+            <h3 v-if="!desc">{{ list.title }}</h3>
+            <h3 v-if="!desc">{{ list.name }}</h3>
           </div>
-          <div class="text-wrapper">
-            <p>{{ episode.name }}</p>
-            <h6>{{ episode.overview }}</h6>
-            <p>{{ dateChage(episode.air_date) }}</p>
+          <div class="text-wrapper" v-if="desc">
+            <p>{{ list.title }}</p>
+            <p>{{ list.name }}</p>
+            <h6>{{ list.overview }}</h6>
+            <p v-if="type === 0">{{ dateChage(list.release_date) }}</p>
+            <p v-else>{{ dateChage(list.first_air_date) }}</p>
           </div>
         </li>
       </ul>
@@ -45,32 +50,21 @@
 
 <script>
 export default {
-  mounted() {
-    this.getTvSeries(this.season);
-  },
+  mounted() {},
+
   props: {
-    season: Number,
+    type: Number,
+    title: String,
+    listData: Array,
+    desc: Boolean,
   },
   data() {
     return {
-      episode: {},
-      loading: false,
       currentSlide: 0,
     };
   },
 
   methods: {
-    getTvSeries(season) {
-      const option = { id: this.$route.query.id, season };
-      this.$axios
-        .get("http://localhost:4000/api/tv/season", { params: option })
-        .then((res) => {
-          console.log(res);
-          this.episode = { ...res.data.list };
-          this.loading = true;
-          return res;
-        });
-    },
     dateChage(index) {
       const date = new Date(index).toLocaleDateString("ko-KR", {
         year: "numeric",
@@ -79,11 +73,12 @@ export default {
       });
       return date;
     },
-  },
-  watch: {
-    season() {
-      this.currentSlide = 0;
-      this.getTvSeries(this.season);
+    moveDetailPage(id) {
+      if (this.type === 0) {
+        this.$router.push({ name: "MovieDetail", query: { id } });
+      } else {
+        this.$router.push({ name: "TvDetail", query: { id } });
+      }
     },
   },
 };
@@ -143,11 +138,12 @@ h2 {
   transition: 0.5s ease;
   > li {
     &:hover {
-      .video-wrapper:after {
-        display: block;
+      .video-wrapper h3:after {
+        background: rgba($color: #000000, $alpha: 0.1);
       }
     }
     .video-wrapper {
+      cursor: pointer;
       width: 337px;
       overflow: hidden;
       height: 190px;
@@ -155,6 +151,36 @@ h2 {
       box-shadow: 0 4px 7px rgba(0, 0, 0, 0.25);
       margin-bottom: 10px;
       position: relative;
+
+      h3 {
+        position: absolute;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: 600;
+        width: 100%;
+        text-align: center;
+        word-break: keep-all;
+        pointer-events: none;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        padding: 0 20px;
+        &:after {
+          content: "";
+          position: absolute;
+          display: block;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba($color: #000000, $alpha: 0.4);
+        }
+      }
     }
     .text-wrapper {
       width: 337px;
