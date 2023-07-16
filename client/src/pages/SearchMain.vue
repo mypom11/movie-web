@@ -72,7 +72,6 @@ export default {
         })
         .then((res) => {
           this.searchResult = { ...res.data.list };
-          console.log(res);
           return res;
         });
     },
@@ -87,7 +86,6 @@ export default {
           })
           .then((res) => {
             this.searchResult = { ...this.searchResult, ...res.data.list };
-            console.log(res);
             return res;
           });
     },

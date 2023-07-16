@@ -1,6 +1,5 @@
 <template>
   <section :style="{ height: `${sectionHeight}px` }">
-    <hr style="width: 100%; height: 1px; background: red" />
     <div class="container inner">
       <div class="typo" v-for="(typo, i) in typoData" :key="i">
         <h2 v-html="typo.title"></h2>

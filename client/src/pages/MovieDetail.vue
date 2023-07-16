@@ -152,7 +152,6 @@ export default {
       this.$axios
         .get("http://localhost:4000/api/movie/detail", { params: { id } })
         .then((res) => {
-          console.log(res);
           this.movieDetail = { ...res.data };
           res.data.credit.cast.forEach((item, i) => {
             if (i <= 10) {

@@ -1,7 +1,5 @@
 <template>
   <main>
-    <p class="test">{{ scrollTop }}</p>
-
     <FirstSection
       :sectionHeight="setLayout(5)"
       :scrollTop="scrollTop"

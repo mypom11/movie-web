@@ -163,7 +163,6 @@ export default {
       this.$axios
         .get("http://localhost:4000/api/tv/detail", { params: { id } })
         .then((res) => {
-          console.log(res);
           this.tvDetail = { ...res.data };
           this.selectedSeason = res.data.detail.number_of_seasons;
           this.makeTab(this.selectedSeason);

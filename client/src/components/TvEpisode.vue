@@ -65,7 +65,6 @@ export default {
       this.$axios
         .get("http://localhost:4000/api/tv/season", { params: option })
         .then((res) => {
-          console.log(res);
           this.episode = { ...res.data.list };
           this.loading = true;
           return res;

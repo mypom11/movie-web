@@ -99,7 +99,6 @@ export default {
       });
     },
     onPlayerReady() {
-      console.log("ready");
       this.updateProgress();
     },
     onPlayerStateChange(event) {
@@ -127,7 +126,6 @@ export default {
       const progressBarWidth = progressBar.offsetWidth;
       const clickPosition =
         event.clientX - progressBar.getBoundingClientRect().left;
-      console.log(event.clientX, progressBarWidth);
       const seekTime =
         (clickPosition / progressBarWidth) * this.player.getDuration();
       this.player.seekTo(seekTime, true);
