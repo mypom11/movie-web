@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import axios from "axios";
+import mixin from "./mixin";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +17,7 @@ app.config.globalProperties.$axios = axios;
 
 app
   .component("font-awesome-icon", FontAwesomeIcon)
+  .mixin(mixin)
   .use(store)
   .use(router)
   .mount("#app");

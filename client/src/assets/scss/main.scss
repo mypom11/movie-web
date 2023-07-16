@@ -6,16 +6,42 @@ body {
     min-height: 100vh;
 }
 
+$breakpoint-mobile: 500px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1920px;
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$breakpoint-desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
 main {
-    padding: 60px 0;
+    padding: 60px 0 0;
 }
 
 .inner {
     width: 1920px;
     margin: 0 auto;
+    transition: .2s;
+    @include tablet(){
+        width: 1024px;
+    }
 }
 
 .slide-fade-enter-from {

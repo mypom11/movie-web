@@ -1,9 +1,10 @@
 <template>
-  <section
+  <section>
+    <!-- <section
     :style="{
       background: `no-repeat center/100% url(https://image.tmdb.org/t/p/original/${movieList[mainCard].backdrop_path})`,
     }"
-  >
+  > -->
     <h2>{{ title }}</h2>
     <ul
       class="cover-flow"
@@ -150,7 +151,7 @@ $cover-width: 300px;
     will-change: transform;
     display: inline-block;
     margin-right: 30px;
-    transition: 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+    transition: 0.4s ease;
     position: relative;
     margin-top: 250px;
     cursor: pointer;

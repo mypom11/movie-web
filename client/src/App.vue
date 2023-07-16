@@ -5,13 +5,15 @@
       <component :is="Component" />
     </keep-alive>
   </router-view>
+  <FooterComponent />
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader.vue";
+import FooterComponent from "./components/FooterComponent.vue";
 
 export default {
-  components: { AppHeader },
+  components: { AppHeader, FooterComponent },
 };
 </script>
 
