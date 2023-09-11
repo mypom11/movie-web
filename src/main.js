@@ -15,7 +15,7 @@ library.add(fas, far);
 const app = createApp(App);
 
 axios.defaults.baseURL = process.env.VUE_APP_URL;
-
+axios.defaults.withCredentials = true;
 axios.defaults.headers = {
   "Access-Control-Allow-Origin": "https://movie-web-pearl.vercel.app",
   "Access-Control-Allow-Credentials": "true",
