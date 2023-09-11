@@ -1,6 +1,6 @@
 <template>
   <section :style="{ height: `${sectionHeight}px` }">
-    <div class="container inner">
+    <div class="container">
       <div class="typo" v-for="(typo, i) in typoData" :key="i">
         <h2 v-html="typo.title"></h2>
         <p v-html="typo.desc"></p>
@@ -127,6 +127,8 @@ section {
   flex-direction: column;
   align-items: flex-start;
   padding: 50vh 100px 0;
+  width: 1920px;
+  margin: 0 auto;
 }
 .typo {
   width: 50%;

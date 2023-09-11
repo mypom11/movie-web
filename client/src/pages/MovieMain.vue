@@ -69,7 +69,7 @@ export default {
       const year = today.getFullYear();
       const month = today.getMonth();
       const day = today.getDate();
-      const url = "http://localhost:4000/api/discover/movie";
+      const url = `${process.env.VUE_APP_URL}/api/discover/movie`;
       const option = {
         "release_date.gte": new Date(year, month - 1, day),
         "release_date.lte": today,

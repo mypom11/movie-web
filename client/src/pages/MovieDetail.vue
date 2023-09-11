@@ -150,7 +150,7 @@ export default {
   methods: {
     getMovieDetail(id) {
       this.$axios
-        .get("http://localhost:4000/api/movie/detail", { params: { id } })
+        .get(`${process.env.VUE_APP_URL}/api/movie/detail`, { params: { id } })
         .then((res) => {
           this.movieDetail = { ...res.data };
           res.data.credit.cast.forEach((item, i) => {
