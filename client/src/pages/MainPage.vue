@@ -10,15 +10,15 @@
       :scrollTop="scrollTop"
       :prevScrollHeight="setLayout(5)"
     />
-    <ThirdSection
+    <!-- <ThirdSection
       :sectionHeight="setLayout(4.5)"
       :scrollTop="scrollTop"
       :prevScrollHeight="setLayout(8)"
-    />
+    /> -->
     <ForthSection
       :sectionHeight="setLayout(1)"
       :scrollTop="scrollTop"
-      :prevScrollHeight="setLayout(12.5)"
+      :prevScrollHeight="setLayout(8)"
     />
   </main>
 </template>
@@ -26,7 +26,7 @@
 <script>
 import SecondSection from "@/components/MainPage/SecondSection.vue";
 import FirstSection from "@/components/MainPage/FirstSection.vue";
-import ThirdSection from "@/components/MainPage/ThirdSection.vue";
+// import ThirdSection from "@/components/MainPage/ThirdSection.vue";
 import ForthSection from "@/components/MainPage/ForthSection.vue";
 
 export default {
@@ -54,7 +54,12 @@ export default {
     window.removeEventListener("scroll", this.getScrollTop);
     window.removeEventListener("resize", this.setLayout);
   },
-  components: { FirstSection, SecondSection, ThirdSection, ForthSection },
+  components: {
+    FirstSection,
+    SecondSection,
+    //  ThirdSection,
+    ForthSection,
+  },
 };
 </script>
 

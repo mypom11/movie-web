@@ -63,7 +63,7 @@ export default {
     getTvSeries(season) {
       const option = { id: this.$route.query.id, season };
       this.$axios
-        .get(`${process.env.VUE_APP_URL}/api/tv/season`, { params: option })
+        .get(`${process.env.VUE_APP_URL}/tv/season`, { params: option })
         .then((res) => {
           this.episode = { ...res.data.list };
           this.loading = true;

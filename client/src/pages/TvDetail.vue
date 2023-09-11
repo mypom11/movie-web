@@ -161,7 +161,7 @@ export default {
   methods: {
     getTvDetail(id) {
       this.$axios
-        .get(`${process.env.VUE_APP_URL}/api/tv/detail`, { params: { id } })
+        .get(`${process.env.VUE_APP_URL}/tv/detail`, { params: { id } })
         .then((res) => {
           this.tvDetail = { ...res.data };
           this.selectedSeason = res.data.detail.number_of_seasons;

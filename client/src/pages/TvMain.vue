@@ -85,7 +85,7 @@ export default {
         const option6 = {
           with_watch_providers: 337,
         };
-        const url = `${process.env.VUE_APP_URL}/api/discover/tv`;
+        const url = `${process.env.VUE_APP_URL}/discover/tv`;
 
         const promises = [
           this.$axios.get(url),

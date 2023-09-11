@@ -65,7 +65,7 @@ export default {
     },
     getMovieList() {
       this.$axios
-        .get(`${process.env.VUE_APP_URL}/api/search`, {
+        .get(`${process.env.VUE_APP_URL}/search`, {
           params: {
             query: this.query,
           },
@@ -78,7 +78,7 @@ export default {
     moreData() {
       if (this.searchResult.total_page != this.searchResult.page)
         this.$axios
-          .get(`${process.env.VUE_APP_URL}/api/search`, {
+          .get(`${process.env.VUE_APP_URL}/search`, {
             params: {
               query: this.query,
               page: Number(this.searchResult.page) + 1,
