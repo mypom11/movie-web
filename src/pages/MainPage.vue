@@ -16,7 +16,7 @@
       :prevScrollHeight="setLayout(8)"
     /> -->
     <ForthSection
-      :sectionHeight="setLayout(1)"
+      :sectionHeight="setLayout(1.5)"
       :scrollTop="scrollTop"
       :prevScrollHeight="setLayout(8)"
     />
